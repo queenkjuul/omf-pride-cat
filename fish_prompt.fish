@@ -1,14 +1,16 @@
-# forked from Toaster https://github.com/oh-my-fish/theme-toaster
+# original slavic-cat forked from Toaster https://github.com/oh-my-fish/theme-toaster
+# this was forked from slavic-cat https://github.com/yangwao/omf-theme-slavic-cat
 
-set __slavic_color_orange FD971F
-set __slavic_color_blue 6EC9DD
+set __slavic_color_orange FFA52C
+set __slavic_color_blue 55CDFC
 set __slavic_color_green A6E22E
-set __slavic_color_yellow E6DB7E
-set __slavic_color_pink F92672
+set __slavic_color_yellow FFF430
+set __slavic_color_pink F7A8B8
 set __slavic_color_grey 554F48
 set __slavic_color_white F1F1F1
-set __slavic_color_purple 9458FF
-set __slavic_color_lilac AE81FF
+set __slavic_color_purple 9C59D1
+set __slavic_color_lilac B77FDD
+set __slavic_color_red CD0000
 
 function __slavic_color_echo
   set_color $argv[1]
@@ -55,7 +57,7 @@ function __slavic_git_status
   # In git
   if test -n (__slavic_git_branch_name)
 
-    __slavic_color_echo $__slavic_color_blue " ☭ "
+    #__slavic_color_echo $__slavic_color_red " ☭ "
     __slavic_color_echo $__slavic_color_white (__slavic_git_branch_name)
 
     if test -n (__slavic_git_status_codes)
@@ -84,9 +86,16 @@ function fish_prompt
   end
   set_color $__slavic_color_lilac
   printf '] '
-  __slavic_color_echo $__slavic_color_purple (prompt_pwd)
+  __slavic_color_echo $__slavic_color_purple (whoami)
+  __slavic_color_echo $__slavic_color_blue ":"
+  __slavic_color_echo $__slavic_color_lilac (prompt_pwd)
+  __slavic_color_echo $__slavic_color_red " ☭ "
   __slavic_git_status
 
   echo
-  __slavic_color_echo $__slavic_color_pink "⫸  "
+  __slavic_color_echo $__slavic_color_blue "➤"
+  __slavic_color_echo $__slavic_color_pink "➤"
+  __slavic_color_echo $__slavic_color_white "➤"
+  __slavic_color_echo $__slavic_color_pink "➤"
+  __slavic_color_echo $__slavic_color_blue "➤  "
 end
