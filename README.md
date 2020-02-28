@@ -2,7 +2,7 @@
 
 A fish (shell) theme with a Slavic cat and a rainbow that signifies git status.
 
-This is slightly modified from the original Slavic Cat, with a pride flag prompt. All of the colors in the scheme have been pulled from various queer pride flags. I am planning to eventually provide additional flag prompts. 
+This is slightly modified from the original Slavic Cat, with a customizable pride flag prompt.
 
 [![Oh My Fish](https://img.shields.io/badge/Framework-Oh_My_Fish-blue.svg?style=flat)](https://github.com/oh-my-fish/oh-my-fish)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](/LICENSE)
@@ -10,12 +10,12 @@ This is slightly modified from the original Slavic Cat, with a pride flag prompt
 
 
 
-## Instalation
+## Installation
 
 #### Requirements
 * [Fish shell](https://github.com/fish-shell/fish-shell) - a smart and user-friendly command line
 shell for OS X, Linux, and the rest of the family
-* [Oh My Fish](https://github.com/oh-my-fish/oh-my-fish) - The Fishshell Framework
+* [Oh My Fish](https://github.com/oh-my-fish/oh-my-fish) - The Fish shell Framework
 
 Once Oh My Fish is installed:
 
@@ -23,9 +23,21 @@ Once Oh My Fish is installed:
 
 ### Options
 
-Choose Flag:
+Choose Flag
 
-    set -U __pride_flag gay            # default is trans. current options are just gay and trans
+```
+set -U __pride_flag gay            # default is trans. 
+                                   # current options: 
+                                   # trans
+                                   # nonbinary
+                                   # gay
+                                   # bi
+                                   # pan
+                                   # lesbian
+                                   # lipstick
+                                   # soviet
+                                   # sankara
+```
 
 Dirty Commie
 
@@ -34,6 +46,10 @@ Dirty Commie
 Username
 
     set -U __pride_username off        # default is on
+
+Hostname
+
+    set -U __pride_hostname off        # default is on, only displays if username is on
 
 fish bind mode
 
