@@ -217,11 +217,12 @@ function fish_prompt
       __pride_color_echo $__pride_color_sankara_black "➤ "
     case soviet
       set_color -b $__pride_color_soviet_red
-      __pride_color_echo $__pride_color_soviet_red "█"
+      __pride_color_echo $__pride_color_soviet_red " "
       __pride_color_echo $__pride_color_soviet_yellow "☭"
-      __pride_color_echo $__pride_color_soviet_red "█"
-      __pride_color_echo $__pride_color_soviet_red "█"
-      __pride_color_echo $__pride_color_soviet_red "█ "
+      __pride_color_echo $__pride_color_soviet_red " "
+      __pride_color_echo $__pride_color_soviet_red " "
+      __pride_color_echo $__pride_color_soviet_red "  "
       set_color normal 
+      __pride_color_echo $__pride_color_soviet_red " "
   end
 end
