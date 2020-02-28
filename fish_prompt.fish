@@ -67,6 +67,10 @@ if test -z "$__pride_flag"
   set -U __pride_flag trans
 end
 
+if test "$__pride_flag" = "default"
+  set -U __pride_flag trans
+end
+
 function __pride_color_echo
   set_color $argv[1]
   if test (count $argv) -eq 2
