@@ -8,7 +8,7 @@ This is slightly modified from the original Slavic Cat, with a customizable prid
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](/LICENSE)
 
 
-![Pride Cat in action](pride-cat-preview.webm)
+![Pride Cat in action](screenshot.png)
 
 ## Installation
 
