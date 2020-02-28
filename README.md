@@ -58,6 +58,10 @@ fish bind mode
 
     set -U __pride_bind_mode off       # default is on
 
+slavic cat
+
+    set -U __pride_cat slavic          # (^._.^)ﾉ
+    set -U __pride_cat default         # (=^･^=)ﾉ
 
     
 [forked from Slavic Cat](https://github.com/yangwao/omf-theme-slavic-cat) which was in turn [forked from Toaster](https://github.com/oh-my-fish/theme-toaster)
