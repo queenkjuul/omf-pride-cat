@@ -8,7 +8,7 @@ This is slightly modified from the original Slavic Cat, with a customizable prid
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](/LICENSE)
 
 
-
+![Pride Cat in action](pride-cat-preview.webm)
 
 ## Installation
 
@@ -41,7 +41,9 @@ set -U __pride_flag gay            # default is trans.
 
 Dirty Commie
 
-    set -U __pride_commie off          # turns off the hammer and sickle icon. default is on
+                                       
+    set -U __pride_commie off          # default is on
+                                       # turns off the hammer and sickle icon. 
 
 Username
 
@@ -49,7 +51,8 @@ Username
 
 Hostname
 
-    set -U __pride_hostname off        # default is on, only displays if username is on
+    set -U __pride_hostname off        # default is on 
+                                       # only displays if username is on
 
 fish bind mode
 

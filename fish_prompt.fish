@@ -111,7 +111,6 @@ end
 function __pride_git_status
   # In git
   if test -n (__pride_git_branch_name)
-
     #__pride_color_echo $__pride_color_red " ☭ "
     __pride_color_echo $__pride_color_white (__pride_git_branch_name)
 
@@ -153,6 +152,7 @@ function fish_prompt
     __pride_color_echo $__pride_color_trans_blue ":"
   end
   __pride_color_echo $__pride_color_lilac (prompt_pwd)
+  __pride_color_echo $__pride_color_lilac " "
   if test "$__pride_commie" != "off"
     __pride_color_echo $__pride_color_red " ☭ "
   end
@@ -217,7 +217,7 @@ function fish_prompt
       __pride_color_echo $__pride_color_soviet_yellow "☭"
       __pride_color_echo $__pride_color_soviet_red "█"
       __pride_color_echo $__pride_color_soviet_red "█"
-      __pride_color_echo $__pride_color_soviet_red "█"
-      set_color normal
+      __pride_color_echo $__pride_color_soviet_red "█ "
+      set_color normal 
   end
 end
