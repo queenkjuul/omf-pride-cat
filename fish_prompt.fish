@@ -74,7 +74,7 @@ if test $__pride_cat != slavic
 end
 
 if test $__pride_cat_status = default
-  set __pride_cat_status on
+  set -U __pride_cat_status on
 end
 
 if test $__pride_cat_status = off
@@ -86,6 +86,10 @@ else
     case default
       set __pride_cat_icon " (=^･^=)ﾉ"
   end
+end
+
+if test $__pride_bind_mode = default
+  set -U __pride_bind_mode off
 end
 
 # Functions
