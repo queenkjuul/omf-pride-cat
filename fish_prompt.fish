@@ -69,6 +69,24 @@ switch $__pride_flag
     set -U __pride_flag trans
 end
 
+if test $__pride_cat != slavic  
+  set __pride_cat default
+end
+
+if test $__pride_cat_status = default
+  set __pride_cat_status on
+end
+
+if test $__pride_cat_status = off
+  set __pride_cat_icon " "
+else
+  switch $__pride_cat 
+    case slavic
+      set __pride_cat_icon " (^._.^)ﾉ"
+    case default
+      set __pride_cat_icon " (=^･^=)ﾉ"
+  end
+end
 
 # Functions
 function __pride_color_echo
@@ -112,20 +130,25 @@ function __pride_git_status_icons
   __pride_rainbow $git_status $__pride_color_grey '?'
 end
 
+function __pride_print_cat
+  __pride_color_echo $__pride_color_white $__pride_cat_icon
+end 
+
 function __pride_git_status
   # In git
   if test -n (__pride_git_branch_name)
     __pride_color_echo $__pride_color_white (__pride_git_branch_name)
     if test -n (__pride_git_status_codes)
       __pride_color_echo $__pride_color_trans_pink ' ●'
-      if test $__pride_cat = slavic
-        __pride_color_echo $__pride_color_white ' (^._.^)ﾉ'
-      else
-        __pride_color_echo $__pride_color_white ' (=^･^=)ﾉ'
-      end
+      __pride_print_cat
       __pride_git_status_icons
     else
       __pride_color_echo $__pride_color_green ' ○'
+      __pride_print_cat
+    end
+  else
+    if test "$__pride_cat_status" = "on"
+      __pride_print_cat
     end
   end
 end
@@ -221,9 +244,7 @@ function fish_prompt
         set_color -b $__pride_color_soviet_red
         __pride_color_echo $__pride_color_soviet_red " "
         __pride_color_echo $__pride_color_soviet_yellow "☭"
-        __pride_color_echo $__pride_color_soviet_red " "
-        __pride_color_echo $__pride_color_soviet_red " "
-        __pride_color_echo $__pride_color_soviet_red "  "
+        __pride_color_echo $__pride_color_soviet_red "    "
         set_color normal 
         __pride_color_echo $__pride_color_soviet_red " "
       case default

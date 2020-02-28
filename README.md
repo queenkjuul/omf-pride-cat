@@ -23,7 +23,7 @@ Once Oh My Fish is installed:
 
 ### Options
 
-Choose Flag
+flag
 
 ```
 set -U __pride_flag gay            # default is trans. 
@@ -39,17 +39,17 @@ set -U __pride_flag gay            # default is trans.
                                    # sankara
 ```
 
-Dirty Commie
+dirty commie
 
                                        
     set -U __pride_commie off          # default is on
                                        # turns off the hammer and sickle icon. 
 
-Username
+username
 
     set -U __pride_username off        # default is on
 
-Hostname
+hostname
 
     set -U __pride_hostname off        # default is on 
                                        # only displays if username is on
@@ -58,11 +58,23 @@ fish bind mode
 
     set -U __pride_bind_mode off       # default is on
 
-slavic cat
+cat
+
+    set -U __pride_cat_status on       # show always, default
+    set -U __pride_cat_status off      # show never
+    set -U __pride_cat_status git      # only in git
+                                       # like og slavic-cat
+
+which cat
 
     set -U __pride_cat slavic          # (^._.^)ﾉ
     set -U __pride_cat default         # (=^･^=)ﾉ
 
+### Functions
+
+Reset all theme variables to defaults
+
+    pride_reset_defaults
     
 [forked from Slavic Cat](https://github.com/yangwao/omf-theme-slavic-cat) which was in turn [forked from Toaster](https://github.com/oh-my-fish/theme-toaster)
 
