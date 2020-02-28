@@ -56,7 +56,7 @@ hostname
 
 fish bind mode
 
-    set -U __pride_bind_mode off       # default is on
+    set -U __pride_bind_mode on       # default is off
 
 cat
 
