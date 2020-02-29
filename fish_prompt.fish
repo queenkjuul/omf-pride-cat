@@ -93,12 +93,13 @@ if test $__pride_bind_mode = default
 end
 
 if test $__pride_prompt = default
-  set -U __pride_prompt "➤"
+  set -U __pride_prompt_char "➤"
 end
-if test $__pride_prompt = "block"
-    set -U __pride_prompt █
+if test $__pride_prompt = block
+  set -U __pride_prompt_char █
+else
+  set -U __pride_prompt_char "➤"
 end
-
 
 # Functions
 function __pride_color_echo
@@ -202,56 +203,56 @@ function fish_prompt
   function __pride_flag_line
     switch $__pride_flag
       case trans
-        __pride_color_echo $__pride_color_trans_blue "$__pride_prompt"
-        __pride_color_echo $__pride_color_trans_pink "$__pride_prompt"
-        __pride_color_echo $__pride_color_white "$__pride_prompt"
-        __pride_color_echo $__pride_color_trans_pink "$__pride_prompt"
-        __pride_color_echo $__pride_color_trans_blue "$__pride_prompt  "
+        __pride_color_echo $__pride_color_trans_blue "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_trans_pink "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_white "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_trans_pink "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_trans_blue "$__pride_prompt_char  "
       case gay
-        __pride_color_echo $__pride_color_red "$__pride_prompt"
-        __pride_color_echo $__pride_color_orange "$__pride_prompt"
-        __pride_color_echo $__pride_color_yellow "$__pride_prompt"
-        __pride_color_echo $__pride_color_green "$__pride_prompt"
-        __pride_color_echo $__pride_color_blue "$__pride_prompt"
-        __pride_color_echo $__pride_color_purple "$__pride_prompt  "
+        __pride_color_echo $__pride_color_red "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_orange "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_yellow "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_green "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_blue "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_purple "$__pride_prompt_char  "
       case pan
-        __pride_color_echo $__pride_color_pan_pink "$__pride_prompt"
-        __pride_color_echo $__pride_color_pan_pink "$__pride_prompt"
-        __pride_color_echo $__pride_color_pan_yellow "$__pride_prompt"
-        __pride_color_echo $__pride_color_pan_yellow "$__pride_prompt"
-        __pride_color_echo $__pride_color_pan_blue "$__pride_prompt"
-        __pride_color_echo $__pride_color_pan_blue "$__pride_prompt  "
+        __pride_color_echo $__pride_color_pan_pink "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_pan_pink "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_pan_yellow "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_pan_yellow "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_pan_blue "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_pan_blue "$__pride_prompt_char  "
       case nonbinary
-        __pride_color_echo $__pride_color_nb_yellow "$__pride_prompt"
-        __pride_color_echo $__pride_color_white "$__pride_prompt"
-        __pride_color_echo $__pride_color_nb_purple "$__pride_prompt"
-        __pride_color_echo $__pride_color_black "$__pride_prompt  "
+        __pride_color_echo $__pride_color_nb_yellow "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_white "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_nb_purple "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_black "$__pride_prompt_char  "
       case bi
-        __pride_color_echo $__pride_color_bi_pink "$__pride_prompt"
-        __pride_color_echo $__pride_color_bi_pink "$__pride_prompt"
-        __pride_color_echo $__pride_color_bi_purple "$__pride_prompt"
-        __pride_color_echo $__pride_color_bi_purple "$__pride_prompt"
-        __pride_color_echo $__pride_color_bi_blue "$__pride_prompt"
-        __pride_color_echo $__pride_color_bi_blue "$__pride_prompt  "
+        __pride_color_echo $__pride_color_bi_pink "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_bi_pink "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_bi_purple "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_bi_purple "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_bi_blue "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_bi_blue "$__pride_prompt_char  "
       case lesbian
-        __pride_color_echo $__pride_color_lesbian_1 "$__pride_prompt"
-        __pride_color_echo $__pride_color_lesbian_2 "$__pride_prompt"
-        __pride_color_echo $__pride_color_lesbian_3 "$__pride_prompt"
-        __pride_color_echo $__pride_color_lesbian_4 "$__pride_prompt"
-        __pride_color_echo $__pride_color_lesbian_5 "$__pride_prompt "
+        __pride_color_echo $__pride_color_lesbian_1 "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_lesbian_2 "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_lesbian_3 "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_lesbian_4 "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_lesbian_5 "$__pride_prompt_char "
       case lipstick
-        __pride_color_echo $__pride_color_lipstick_1 "$__pride_prompt"
-        __pride_color_echo $__pride_color_lipstick_2 "$__pride_prompt"
-        __pride_color_echo $__pride_color_lipstick_3 "$__pride_prompt"
-        __pride_color_echo $__pride_color_lipstick_4 "$__pride_prompt"
-        __pride_color_echo $__pride_color_lipstick_5 "$__pride_prompt"
-        __pride_color_echo $__pride_color_lipstick_6 "$__pride_prompt "
+        __pride_color_echo $__pride_color_lipstick_1 "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_lipstick_2 "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_lipstick_3 "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_lipstick_4 "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_lipstick_5 "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_lipstick_6 "$__pride_prompt_char "
       case sankara
-        __pride_color_echo $__pride_color_sankara_yellow "$__pride_prompt"
-        __pride_color_echo $__pride_color_sankara_green "$__pride_prompt"
-        __pride_color_echo $__pride_color_sankara_red "$__pride_prompt"
-        __pride_color_echo $__pride_color_sankara_grey "$__pride_prompt"
-        __pride_color_echo $__pride_color_sankara_black "$__pride_prompt "
+        __pride_color_echo $__pride_color_sankara_yellow "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_sankara_green "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_sankara_red "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_sankara_grey "$__pride_prompt_char"
+        __pride_color_echo $__pride_color_sankara_black "$__pride_prompt_char "
       case soviet
         set_color -b $__pride_color_soviet_red
         __pride_color_echo $__pride_color_soviet_red " "
