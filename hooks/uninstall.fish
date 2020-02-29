@@ -1,10 +1,9 @@
-function pride_reset_defaults
-    set -e __pride_flag default 
-    set -e __pride_bind_mode default
-    set -e __pride_commie default
-    set -e __pride_hostname default
-    set -e __pride_username default
-    set -e __pride_cat default
-    set -e __pride_cat_status on
-    echo "pride cat theme uninstalled"
-end
+set --erase __pride_flag
+set --erase __pride_bind_mode
+set --erase __pride_commie 
+set --erase __pride_hostname 
+set --erase __pride_username
+set --erase __pride_cat
+set --erase __pride_cat_status
+echo "pride cat theme uninstalled"
+
