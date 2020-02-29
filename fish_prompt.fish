@@ -96,7 +96,7 @@ if test $__pride_prompt = default
   set -U __pride_prompt "➤"
 end
 if test $__pride_prompt = "block"
-    set -U __pride_prompt "█"
+    set -U __pride_prompt █
 end
 
 

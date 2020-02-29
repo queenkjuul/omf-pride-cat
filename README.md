@@ -42,7 +42,7 @@ set -U __pride_flag gay            # default is trans.
 prompt
 
     set -U __pride_prompt *            # default  ➤
-                                       # set to whatever you want
+                                       # set to whatever you want (be careful)
     set -U __pride_prompt block        # will set █
                                        # soviet flag overrides prompt setting
 
