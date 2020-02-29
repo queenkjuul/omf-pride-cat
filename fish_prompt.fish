@@ -92,12 +92,11 @@ if test $__pride_bind_mode = default
   set -U __pride_bind_mode off
 end
 
-switch $__pride_prompt
-  case default
-    set -U $__pride_prompt "➤"
-  case block
+if test $__pride_prompt = default
+  set -U $__pride_prompt "➤"
+end
+if test $__pride_prompt = block
     set -U $__pride_prompt "█"
-  case '*'
 end
 
 
