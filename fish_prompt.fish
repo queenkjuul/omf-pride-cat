@@ -92,6 +92,15 @@ if test $__pride_bind_mode = default
   set -U __pride_bind_mode off
 end
 
+switch $__pride_prompt
+  case default
+    set -U $__pride_prompt = "➤"
+  case block
+    set -U $__pride_prompt = "█"
+  case '*'
+end
+
+
 # Functions
 function __pride_color_echo
   set_color $argv[1]
@@ -183,7 +192,7 @@ function fish_prompt
     end
     __pride_color_echo $__pride_color_white ":"
   end
-  set_color $__pride_color_violet;echo -n (prompt_pwd);set_color normal
+  set_color magenta;echo -n (prompt_pwd);set_color normal
   __pride_color_echo $__pride_color_violet " "
   if test "$__pride_commie" != "off"
     __pride_color_echo $__pride_color_red " ☭ "

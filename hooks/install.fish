@@ -5,6 +5,6 @@ set -U __pride_hostname default
 set -U __pride_username default
 set -U __pride_cat default
 set -U __pride_cat_status on
-set -U __pride_prompt "➤"
+set -U __pride_prompt default
 echo "pride cat theme reset to defaults"
 

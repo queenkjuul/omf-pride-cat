@@ -39,6 +39,13 @@ set -U __pride_flag gay            # default is trans.
                                    # sankara
 ```
 
+prompt
+
+    set -U __pride_prompt *            # default  ➤
+                                       # set to whatever you want
+    set -U __pride_prompt block        # will set █
+                                       # soviet flag overrides prompt setting
+
 dirty commie
 
                                        
