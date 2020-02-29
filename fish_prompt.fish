@@ -93,12 +93,12 @@ if test $__pride_bind_mode = default
 end
 
 if test $__pride_prompt = default
-  set -U __pride_prompt_char "➤"
+  set __pride_prompt_char "➤"
 end
 if test $__pride_prompt = box
-  set -U __pride_prompt_char "█"
+  set __pride_prompt_char "█"
 else
-  set -U __pride_prompt_char "➤"
+  set __pride_prompt_char "➤"
 end
 
 # Functions
