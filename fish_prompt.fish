@@ -64,10 +64,10 @@ set __pride_color_grey 554F48
 set __pride_color_white F1F1F1
 
 # Defaults
-switch $__pride_flag
-  case default
+if test $__pride_flag = "default"
     set -U __pride_flag trans
 end
+
 
 if test $__pride_cat != slavic  
   set __pride_cat default
