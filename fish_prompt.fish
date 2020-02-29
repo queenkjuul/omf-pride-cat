@@ -94,9 +94,9 @@ end
 
 switch $__pride_prompt
   case default
-    set -U $__pride_prompt = "➤"
+    set -U $__pride_prompt "➤"
   case block
-    set -U $__pride_prompt = "█"
+    set -U $__pride_prompt "█"
   case '*'
 end
 
