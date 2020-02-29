@@ -183,7 +183,7 @@ function fish_prompt
     end
     __pride_color_echo $__pride_color_white ":"
   end
-  __pride_color_echo $__pride_color_violet (prompt_pwd)
+  set_color $__pride_color_violet;echo -n (prompt_pwd);set_color normal
   __pride_color_echo $__pride_color_violet " "
   if test "$__pride_commie" != "off"
     __pride_color_echo $__pride_color_red " ☭ "
