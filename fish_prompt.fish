@@ -92,15 +92,6 @@ if test $__pride_bind_mode = default
   set -U __pride_bind_mode off
 end
 
-if test $__pride_prompt = default
-  set -U __pride_prompt_char "➤"
-end
-if test $__pride_prompt = block
-  set -U __pride_prompt_char █
-else
-  set -U __pride_prompt_char "➤"
-end
-
 # Functions
 function __pride_color_echo
   set_color $argv[1]
@@ -167,6 +158,12 @@ function __pride_git_status
 end
 
 function fish_prompt
+  if test $__pride_prompt = "default"
+    set __pride_prompt_char "➤"
+  end
+  if test $__pride_prompt = "block"
+    set __pride_prompt_char "█"
+  end
   if test "$__pride_bind_mode" != "off"
     set_color $__pride_color_lilac
     printf '['
