@@ -92,18 +92,6 @@ if test $__pride_bind_mode = default
   set -U __pride_bind_mode off
 end
 
-<<<<<<< HEAD
-=======
-if test $__pride_prompt = default
-  set __pride_prompt_char "➤"
-end
-if test $__pride_prompt = box
-  set __pride_prompt_char "█"
-else
-  set __pride_prompt_char "➤"
-end
-
->>>>>>> 2409c3db1a9467c4ba8538234f4e840071f30e4d
 # Functions
 function __pride_color_echo
   set_color $argv[1]
