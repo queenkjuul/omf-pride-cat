@@ -26,7 +26,7 @@ set -g __pride_color_pan_blue 1BB3FF
 set -g __pride_flag_pan FF1B8D FF1B8D FFDA00 FFDA00 1BB3FF 1BB3FF
 
 # nonbinary
-set -g __pride_flag_nonbinary FFF430 FFFFFF 9C59D1 191919
+set -g __pride_flag_nb FFF430 FFFFFF 9C59D1 191919
 
 # bi
 set -g __pride_flag_bi D60270 D60270 9B4F96 9B4F96 0038A8 0038A8
@@ -53,8 +53,8 @@ set -g __pride_color_grey 554F48
 set -g __pride_color_white F1F1F1
 
 # graphics
-set -g __pride_cat_default " (^._.^)ﾉ"
-set -g __pride_cat_slavic " (=^･^=)ﾉ"
+set -g __pride_cat_default " (=^･^=)ﾉ"
+set -g __pride_cat_slavic " (^._.^)ﾉ"
 ###########################################################
 
 # Functions
