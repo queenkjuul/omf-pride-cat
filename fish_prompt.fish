@@ -197,6 +197,7 @@ function __pride_flag_line
   else if test $__pride_flag = soviet
     set_color -b $__pride_color_soviet_red
     echo -n " ☭   "
+    set_color normal
   end 
   echo -n " "
 end
