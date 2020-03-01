@@ -196,6 +196,10 @@ function __pride_flag_line
   echo -n " "
 end
 
+#####################################################################
+# here we go
+####################
+
 function fish_prompt
   __pride_check_defaults
   __pride_print_bind_mode
