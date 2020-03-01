@@ -1,11 +1,14 @@
 # original slavic-cat forked from Toaster https://github.com/oh-my-fish/theme-toaster
 # this was forked from slavic-cat https://github.com/yangwao/omf-theme-slavic-cat
 
-# Colors
+# live long and prosper, loves
+
+# Colors and Flag Definitions
 
 # trans
-set __pride_color_trans_blue 55CDFC
-set __pride_color_trans_pink F7A8B8
+set __pride_trans_blue 55CDFC
+set __pride_trans_pink F7A8B8
+set __pride_flag_trans 55CDFC F7A8B8 FFFFFF F7A8B8 55CDFC
 
 # gay
 set __pride_color_red FF0018
@@ -14,46 +17,32 @@ set __pride_color_yellow FFFF41
 set __pride_color_green 008018
 set __pride_color_blue 0000F9
 set __pride_color_purple 86007D
+set __pride_flag_gay FF0018 FFA52C FFFF41 008018 0000F9 86007D
 
 # pan
 set __pride_color_pan_pink FF1B8D
 set __pride_color_pan_yellow FFDA00
 set __pride_color_pan_blue 1BB3FF
+set __pride_flag_pan FF1B8D FF1B8D FFDA00 FFDA00 1BB3FF 1BB3FF
 
 # nonbinary
-set __pride_color_nb_yellow FFF430
-set __pride_color_nb_purple 9C59D1
+set __pride_flag_nb FFF430 FFFFFF 9C59D1 191919
 
 # bi
-set __pride_color_bi_pink D60270
-set __pride_color_bi_purple 9B4F96
-set __pride_color_bi_blue 0038A8
+set __pride_flag_bi D60270 D60270 9B4F96 9B4F96 0038A8 0038A8
 
 # lesbian
-set __pride_color_lesbian_1 D62900
-set __pride_color_lesbian_2 FF9B55
-set __pride_color_lesbian_3 FFFFFF
-set __pride_color_lesbian_4 D461A6
-set __pride_color_lesbian_5 A50062
+set __pride_flag_lesbian D62900 FF9B55 FFFFFF D461A6 A50062
 
 # lipstick
-set __pride_color_lipstick_1 A60061
-set __pride_color_lipstick_2 B95594
-set __pride_color_lipstick_3 D162A8
-set __pride_color_lipstick_4 E5ADD1
-set __pride_color_lipstick_5 C64D53
-set __pride_color_lipstick_6 8C1801
+set __pride_flag_lipstick A60061 B95594 D162A8 E5ADD1 C64D53 8C1801
 
 # soviet
 set __pride_color_soviet_red CD0000
 set __pride_color_soviet_yellow FFD900
 
 # sankara
-set __pride_color_sankara_yellow FCD116
-set __pride_color_sankara_green 009E49
-set __pride_color_sankara_red EF2B2D
-set __pride_color_sankara_grey F2F2F2
-set __pride_color_sankara_black 191919
+set __pride_flag_sankara FCD116 009E49 EF2B2D F2F2F2 191919 
 
 # misc
 set __pride_color_violet 9C59D1
@@ -63,36 +52,48 @@ set __pride_color_black 000000
 set __pride_color_grey 554F48
 set __pride_color_white F1F1F1
 
-# Defaults
-if test $__pride_flag = "default"
-    set -U __pride_flag trans
-end
-
-
-if test $__pride_cat != slavic  
-  set __pride_cat default
-end
-
-if test $__pride_cat_status = default
-  set -U __pride_cat_status on
-end
-
-if test $__pride_cat_status = off
-  set __pride_cat_icon " "
-else
-  switch $__pride_cat 
-    case slavic
-      set __pride_cat_icon " (^._.^)ﾉ"
-    case default
-      set __pride_cat_icon " (=^･^=)ﾉ"
-  end
-end
-
-if test $__pride_bind_mode = default
-  set -U __pride_bind_mode off
-end
+# graphics
+set __pride_cat_default " (^._.^)ﾉ"
+set __pride_cat_slavic " (=^･^=)ﾉ"
+###########################################################
 
 # Functions
+function __pride_check_defaults
+
+  # bind_mode
+  if test $__pride_bind_mode = default
+    set -U __pride_bind_mode off
+  end
+
+  # prompt character
+  if test $__pride_prompt = "default"
+    set -g __pride_prompt_char "➤"
+  end
+  if test $__pride_prompt = "block"
+    set -g __pride_prompt_char "█"
+  end
+
+  # cat icon
+  if test $__pride_cat_status = off
+    set -g __pride_cat_icon " "
+  else
+    switch $__pride_cat 
+      case slavic
+        eval set -g __pride_cat_icon \$__pride_cat_$__pride_cat
+      case default
+        eval set -g __pride_cat_icon \$__pride_cat_$__pride_cat
+    end
+  end
+
+  # flag
+  if test $__pride_flag = default
+    set -g __pride_flag trans
+  end
+
+  # set current colorscheme
+    eval set -g __pride_current_flag \$__pride_flag_$__pride_flag
+end
+
 function __pride_color_echo
   set_color $argv[1]
   if test (count $argv) -eq 2
@@ -125,7 +126,7 @@ end
 function __pride_git_status_icons
   set -l git_status (__pride_git_status_codes)
 
-  __pride_rainbow $git_status $__pride_color_trans_pink 'D'
+  __pride_rainbow $git_status $__pride_trans_pink 'D'
   __pride_rainbow $git_status $__pride_color_orange 'R'
   __pride_rainbow $git_status $__pride_color_white 'C'
   __pride_rainbow $git_status $__pride_color_green 'A'
@@ -143,7 +144,7 @@ function __pride_git_status
   if test -n (__pride_git_branch_name)
     __pride_color_echo $__pride_color_white (__pride_git_branch_name)
     if test -n (__pride_git_status_codes)
-      __pride_color_echo $__pride_color_trans_pink ' ●'
+      __pride_color_echo $__pride_trans_pink ' ●'
       __pride_print_cat
       __pride_git_status_icons
     else
@@ -157,13 +158,7 @@ function __pride_git_status
   end
 end
 
-function fish_prompt
-  if test $__pride_prompt = "default"
-    set __pride_prompt_char "➤"
-  end
-  if test $__pride_prompt = "block"
-    set __pride_prompt_char "█"
-  end
+function __pride_print_bind_mode
   if test "$__pride_bind_mode" != "off"
     set_color $__pride_color_lilac
     printf '['
@@ -181,86 +176,42 @@ function fish_prompt
     set_color $__pride_color_lilac
     printf '] '
   end
+end
+
+function __pride_print_userinfo
   if test "$__pride_username" != "off"
     __pride_color_echo $__pride_color_bright_pink (whoami)
     if test "$__pride_hostname" != "off"
       __pride_color_echo $__pride_color_white "@"
-      __pride_color_echo $__pride_color_trans_blue (hostname)
+      __pride_color_echo $__pride_trans_blue (hostname)
     end
     __pride_color_echo $__pride_color_white ":"
   end
-  set_color magenta;echo -n (prompt_pwd);set_color normal
-  __pride_color_echo $__pride_color_violet " "
+end
+
+function __pride_flag_line
+  for color in $__pride_current_flag
+    __pride_color_echo $color $__pride_prompt_char
+  end
+  echo -n " "
+end
+
+function fish_prompt
+  __pride_check_defaults
+  __pride_print_bind_mode
+  __pride_print_userinfo
+
+  # print pwd
+  set_color magenta;echo -n (prompt_pwd);set_color normal;echo -n " "
+  # __pride_color_echo $__pride_color_violet " "
+
   if test "$__pride_commie" != "off"
     __pride_color_echo $__pride_color_red " ☭ "
   end
+
   __pride_git_status
 
+  # new line
   echo
-  function __pride_flag_line
-    switch $__pride_flag
-      case trans
-        __pride_color_echo $__pride_color_trans_blue "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_trans_pink "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_white "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_trans_pink "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_trans_blue "$__pride_prompt_char  "
-      case gay
-        __pride_color_echo $__pride_color_red "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_orange "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_yellow "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_green "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_blue "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_purple "$__pride_prompt_char  "
-      case pan
-        __pride_color_echo $__pride_color_pan_pink "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_pan_pink "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_pan_yellow "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_pan_yellow "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_pan_blue "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_pan_blue "$__pride_prompt_char  "
-      case nonbinary
-        __pride_color_echo $__pride_color_nb_yellow "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_white "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_nb_purple "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_black "$__pride_prompt_char  "
-      case bi
-        __pride_color_echo $__pride_color_bi_pink "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_bi_pink "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_bi_purple "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_bi_purple "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_bi_blue "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_bi_blue "$__pride_prompt_char  "
-      case lesbian
-        __pride_color_echo $__pride_color_lesbian_1 "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_lesbian_2 "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_lesbian_3 "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_lesbian_4 "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_lesbian_5 "$__pride_prompt_char "
-      case lipstick
-        __pride_color_echo $__pride_color_lipstick_1 "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_lipstick_2 "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_lipstick_3 "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_lipstick_4 "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_lipstick_5 "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_lipstick_6 "$__pride_prompt_char "
-      case sankara
-        __pride_color_echo $__pride_color_sankara_yellow "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_sankara_green "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_sankara_red "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_sankara_grey "$__pride_prompt_char"
-        __pride_color_echo $__pride_color_sankara_black "$__pride_prompt_char "
-      case soviet
-        set_color -b $__pride_color_soviet_red
-        __pride_color_echo $__pride_color_soviet_red " "
-        __pride_color_echo $__pride_color_soviet_yellow "☭"
-        __pride_color_echo $__pride_color_soviet_red "    "
-        set_color normal 
-        __pride_color_echo $__pride_color_soviet_red " "
-      case default
-        set -U __pride_flag trans
-        __pride_flag_line
-    end
-  end
   __pride_flag_line
 end

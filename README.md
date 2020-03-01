@@ -19,6 +19,8 @@ Once Oh My Fish is installed:
 
     omf install https://github.com/queenkjuul/omf-pride-cat
 
+This can be installed without Oh My Fish, you'll need to run `fish hooks/install.fish` first, then copy the function files to where they belong. 
+
 ### Options
 
 flag
