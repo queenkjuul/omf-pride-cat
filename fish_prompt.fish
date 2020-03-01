@@ -6,55 +6,55 @@
 # Colors and Flag Definitions
 
 # trans
-set __pride_trans_blue 55CDFC
-set __pride_trans_pink F7A8B8
-set __pride_flag_trans 55CDFC F7A8B8 FFFFFF F7A8B8 55CDFC
+set -g __pride_trans_blue 55CDFC
+set -g __pride_trans_pink F7A8B8
+set -g __pride_flag_trans 55CDFC F7A8B8 FFFFFF F7A8B8 55CDFC
 
 # gay
-set __pride_color_red FF0018
-set __pride_color_orange FFA52C
-set __pride_color_yellow FFFF41
-set __pride_color_green 008018
-set __pride_color_blue 0000F9
-set __pride_color_purple 86007D
-set __pride_flag_gay FF0018 FFA52C FFFF41 008018 0000F9 86007D
+set -g __pride_color_red FF0018
+set -g __pride_color_orange FFA52C
+set -g __pride_color_yellow FFFF41
+set -g __pride_color_green 008018
+set -g __pride_color_blue 0000F9
+set -g __pride_color_purple 86007D
+set -g __pride_flag_gay FF0018 FFA52C FFFF41 008018 0000F9 86007D
 
 # pan
-set __pride_color_pan_pink FF1B8D
-set __pride_color_pan_yellow FFDA00
-set __pride_color_pan_blue 1BB3FF
-set __pride_flag_pan FF1B8D FF1B8D FFDA00 FFDA00 1BB3FF 1BB3FF
+set -g __pride_color_pan_pink FF1B8D
+set -g __pride_color_pan_yellow FFDA00
+set -g __pride_color_pan_blue 1BB3FF
+set -g __pride_flag_pan FF1B8D FF1B8D FFDA00 FFDA00 1BB3FF 1BB3FF
 
 # nonbinary
-set __pride_flag_nb FFF430 FFFFFF 9C59D1 191919
+set -g __pride_flag_nb FFF430 FFFFFF 9C59D1 191919
 
 # bi
-set __pride_flag_bi D60270 D60270 9B4F96 9B4F96 0038A8 0038A8
+set -g __pride_flag_bi D60270 D60270 9B4F96 9B4F96 0038A8 0038A8
 
 # lesbian
-set __pride_flag_lesbian D62900 FF9B55 FFFFFF D461A6 A50062
+set -g __pride_flag_lesbian D62900 FF9B55 FFFFFF D461A6 A50062
 
 # lipstick
-set __pride_flag_lipstick A60061 B95594 D162A8 E5ADD1 C64D53 8C1801
+set -g __pride_flag_lipstick A60061 B95594 D162A8 E5ADD1 C64D53 8C1801
 
 # soviet
-set __pride_color_soviet_red CD0000
-set __pride_color_soviet_yellow FFD900
+set -g __pride_color_soviet_red CD0000
+set -g __pride_color_soviet_yellow FFD900
 
 # sankara
-set __pride_flag_sankara FCD116 009E49 EF2B2D F2F2F2 191919 
+set -g __pride_flag_sankara FCD116 009E49 EF2B2D F2F2F2 191919 
 
 # misc
-set __pride_color_violet 9C59D1
-set __pride_color_lilac B77FDD
-set __pride_color_bright_pink f92673
-set __pride_color_black 000000
-set __pride_color_grey 554F48
-set __pride_color_white F1F1F1
+set -g __pride_color_violet 9C59D1
+set -g __pride_color_lilac B77FDD
+set -g __pride_color_bright_pink f92673
+set -g __pride_color_black 000000
+set -g __pride_color_grey 554F48
+set -g __pride_color_white F1F1F1
 
 # graphics
-set __pride_cat_default " (^._.^)ﾉ"
-set __pride_cat_slavic " (=^･^=)ﾉ"
+set -g __pride_cat_default " (^._.^)ﾉ"
+set -g __pride_cat_slavic " (=^･^=)ﾉ"
 ###########################################################
 
 # Functions
@@ -209,7 +209,7 @@ function fish_prompt
   set_color magenta;echo -n (prompt_pwd);set_color normal;echo -n " "
   # __pride_color_echo $__pride_color_violet " "
 
-  if test "$__pride_commie" != "off"
+  if test $__pride_commie != off
     __pride_color_echo $__pride_color_red " ☭ "
   end
 

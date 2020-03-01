@@ -9,11 +9,11 @@ function pride
 
     # set valid variable options
 
-    set opt_def on off default
-    set opt_reset
+    set -g opt_def on off default
+    set -g opt_reset
     if set -q $__pride_flags
         # __pride_flags should be populated with this default list at install
-        set opt_flag gay \
+        set -g opt_flag gay \
                         bi \
                         lesbian \
                         lipstick \
@@ -23,16 +23,16 @@ function pride
                         soviet \
                         sankara
     else   
-        set opt_flag $__pride_flags
+        set -g opt_flag $__pride_flags
     end
-    set opt_commie $opt_def
-    set opt_prompt default block
-    set opt_username $opt_def
-    set opt_hostname $opt_def
-    set opt_bind_mode $opt_def
-    set opt_cat_style default slavic
-    set opt_cat_status default on off git
-    set opt_right_prompt $opt_def
+    set -g opt_commie on off default
+    set -g opt_prompt default block
+    set -g opt_username on off default
+    set -g opt_hostname on off default
+    set -g opt_bind_mode on off default
+    set -g opt_cat_style default slavic
+    set -g opt_cat_status default on off git
+    set -g opt_right_prompt on off default
 
     # this is designed to allow simple extensibility. 
     # to add a new (simple) command, all you need to do is add it to the 
@@ -76,17 +76,18 @@ function pride
     # assign arguments
 
     set -g cmd $argv[1]
-    set -g opt $argv[2]
+    set -g option $argv[2]
     set -g env_var $pride_vars[(contains -i $cmd $pride_commands)]
+
 
     # functions
 
     function pride_set 
-        eval set valid_opts \$opt_$cmd
-        if contains $opt $valid_opts
-            set -U $env_var $opt
+        eval set valid_opt \$opt_$cmd
+        if contains $option $valid_opt
+            set -U $env_var $option
         else
-            invalid $opt $valid_opts
+            invalid $option $valid_opt
         end
         confirm
     end
@@ -94,8 +95,8 @@ function pride
     function invalid # (invalid_argument, valid_arguments[])
         echo "invalid argument \"$argv[1]\" (but you're valid <3)"
         echo "valid options are:"
-        for option in $argv[2..-1]
-            echo $option
+        for value in $argv[2..-1]
+            echo $value
         end
     end
 
