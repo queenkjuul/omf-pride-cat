@@ -8,5 +8,8 @@ set --erase __pride_cat
 set --erase __pride_cat_status
 set --erase __pride_prompt
 set --erase __pride_prompt_char
+set --erase __pride_dummy
+set --erase __pride_flags
+set --erase __pride_right_prompt
 echo "pride cat theme uninstalled"
 

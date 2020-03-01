@@ -87,7 +87,7 @@ function __pride_check_defaults
 
   # flag
   if test $__pride_flag = default
-    set -g __pride_flag trans
+    set __pride_flag trans
   end
 
   # set current colorscheme
@@ -190,9 +190,14 @@ function __pride_print_userinfo
 end
 
 function __pride_flag_line
-  for color in $__pride_current_flag
-    __pride_color_echo $color $__pride_prompt_char
-  end
+  if test $__pride_flag != soviet
+    for color in $__pride_current_flag
+      __pride_color_echo $color $__pride_prompt_char
+    end
+  else if test $__pride_flag = soviet
+    set_color -b $__pride_color_soviet_red
+    echo -n " ☭   "
+  end 
   echo -n " "
 end
 
