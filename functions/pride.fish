@@ -5,7 +5,7 @@
 # live long and prosper, loves
 
 # use as function for fish prompt
-#function pride
+function pride
 
     set __pride_assetfile /mnt/c/Users/QueenKJuul/omf-pride-cat/assetfile.fish
 
@@ -137,4 +137,4 @@
                 invalid $cmd $pride_commands
         end
     end
-#end
+end
