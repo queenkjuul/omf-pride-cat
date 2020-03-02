@@ -92,29 +92,13 @@ Reset all theme variables to defaults
 
     pride_reset_defaults
 
-## Custom Flags
+## Custom Assets
 
-Custom flags can be easily added to pride-cat, assuming they follow the same simple design (just stripes)
+Custom assets ("cats" [emoticons], emblems, prompt characters, and flags) can be easily added with the `pride` utility. 
 
-New flag definitions follow a very simple format:
+    pride add_asset TYPE NAME 'VALUE' ['VALUES']...
 
-    name color1 color2 color3 ... colorN
-
-Color values can be shell values (red, brred, blue, magenta, etc) or they can be hex values (FF0000). To add a flag to your local pride config, run
-
-    pride add_flag name color1 color2 ... colorN
-
-and then you switch to it using the normal 
-
-    pride flag name
-
-for example, to make a French flag prompt, we would run:
-
-```
-pride add_flag france 0000FF FFFFFF FF0000
-pride flag france
-```
-Flag definitions are set as universal variables with the convention `__pride_flag_$name`, so you can see them in `set -U`. Use `set -e __pride_flag_$name` to remove. Flag names must also be present in the `$__pride_flags` list in order to function (which the `pride add_flag` command does of course, but in case of exceptions)
+for details see `pride add_asset help` or `assetfile.fish`
 
 ## More Customization
 
