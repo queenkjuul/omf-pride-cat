@@ -4,13 +4,15 @@
 #   flag name color1 [color2]...
 # color can be hex or shell color name (red, brrblue, magenta, etc)
 # default flags
-flag trans 55CDFC F7A8B8 FFFFFF F7A8B8 55CDFC
+
+flag default FF0018 FFA52C FFFF41 008018 0000F9 86007D
 flag gay FF0018 FFA52C FFFF41 008018 0000F9 86007D
 flag pan FF1B8D FF1B8D FFDA00 FFDA00 1BB3FF 1BB3FF
-flag nonbinary FFF430 FFFFFF 9C59D1 191919
 flag bi D60270 D60270 9B4F96 9B4F96 0038A8 0038A8
 flag lesbian D62900 FF9B55 FFFFFF D461A6 A50062
 flag lipstick A60061 B95594 D162A8 E5ADD1 C64D53 8C1801
+flag trans 55CDFC F7A8B8 FFFFFF F7A8B8 55CDFC
+flag nonbinary FFF430 FFFFFF 9C59D1 191919
 flag sankara FCD116 009E49 EF2B2D F2F2F2 191919
 
 # cat styles are in format
