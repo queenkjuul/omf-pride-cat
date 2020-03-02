@@ -5,7 +5,7 @@
 # live long and prosper, loves
 
 # use as function for fish prompt
-function pride
+#function pride
 
     set __pride_assetfile /mnt/c/Users/QueenKJuul/omf-pride-cat/assetfile.fish
 
@@ -70,6 +70,7 @@ function pride
                 end
             end
         end
+        set -g opt_flag $opt_flag soviet
     end
 
     function pride_set
@@ -93,7 +94,12 @@ function pride
     function confirm 
         eval set value \$__pride_$cmd                                           # $value equals the value of the environment variable we're modifying
         eval set state \$__pride_"$cmd"_$value                                  # $state equals the contents of the currently selected asset
-        eval echo "$cmd is set to \$__pride_$cmd \$state[2..-1]"                # output modified variable name, its new value, and the contents of its asset
+        eval echo -n "$cmd is set to \$__pride_$cmd "
+        if test $cmd = flag
+            __pride_flag_line $state
+        else            
+            eval echo -n "\$state[2..-1]"                # output modified variable name, its new value, and the contents of its asset
+        end                                                                    # TODO: make this print flag
     end
 
 
@@ -137,4 +143,5 @@ function pride
                 invalid $cmd $pride_commands
         end
     end
-end
+#end
+
