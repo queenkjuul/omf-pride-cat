@@ -116,6 +116,10 @@ pride flag france
 ```
 Flag definitions are set as universal variables with the convention `__pride_flag_$name`, so you can see them in `set -U`. Use `set -e __pride_flag_$name` to remove. Flag names must also be present in the `$__pride_flags` list in order to function (which the `pride add_flag` command does of course, but in case of exceptions)
 
+## More Customization
+
+I've done my best to make it straightforward to tweak this even further, though I'm not totally sure what all would need to be tweaked. You can find any variable that you want to adjust and override it with `set -U` to whatever you want. It's even super simple to add variable switches to the `pride.fish` config script, as you can just add a new entry for the variable you want to swap, and a line for valid arguments that it takes. 
+
 ## Features
 
  * gaaaaayyyyyy

@@ -5,87 +5,77 @@
 # live long and prosper, loves
 
 # use as function for fish prompt
-function pride
+#function pride
+
+    set __pride_assetfile /mnt/c/Users/QueenKJuul/omf-pride-cat/assetfile.fish
 
     # set valid variable options
 
-    set -g opt_def on off default
-    set -g opt_reset
-    if set -q $__pride_flags
-        # __pride_flags should be populated with this default list at install
-        set -g opt_flag gay \
-                        bi \
-                        lesbian \
-                        lipstick \
-                        pan \
-                        trans \
-                        nonbinary \
-                        soviet \
-                        sankara
-    else   
-        set -g opt_flag $__pride_flags
-    end
-    set -g opt_commie on off default
-    set -g opt_prompt default block
-    set -g opt_username on off default
-    set -g opt_hostname on off default
-    set -g opt_bind_mode on off default
-    set -g opt_cat_style default slavic
-    set -g opt_cat_status default on off git
-    set -g opt_right_prompt on off default
+    # valid options for most variables
+    set opt_def on off default
 
-    # this is designed to allow simple extensibility. 
-    # to add a new (simple) command, all you need to do is add it to the 
-    # list of commands, add the variable it sets to the list of variables,
-    # and add a variable up above with the valid arguments
+    set opt_cat_status default on off git
+    
+    # all variables which accept default set of options
+    set opt_username $opt_def
+    set opt_hostname $opt_def
+    set opt_bind_mode $opt_def
+    set opt_right_prompt $opt_def
+    set opt_emblem_status $opt_def
+    
+    # valid asset types for importing from assetfile
+    set opt_asset 'cat_style' 'flag' 'emblem_style' 'prompt_char'
 
-    # for example, future release adds a prompt element called "foo"
-    # which is controlled by the __pride_foo environment variable which
-    # takes on, off, red, blue, default as valid values
-
-    #   set pride_commands $pride_commands foo
-    #   set pride_vars $pride_vars __pride_foo
-    #   set opt_foo on off red blue default
-
-    set pride_commands \
-                    reset \
-                    flag \
-                    commie \
-                    prompt \
-                    username \
-                    hostname \
-                    bind_mode \
-                    cat_style \
-                    cat_status \
-                    right_prompt \
-                    add_flag
-
+    # all variables we're allowed to modify with this script
+    # making things easier for myself in the future if I add new functionality to fish_prompt
+    # adding additional config options is as simple as setting a range of acceptable values 
+    # (either the opt_def set, or a custom set defined above),
+    # and add the variable you want to be able to switch to the list below
     set pride_vars \
-                    __pride_dummy \
                     __pride_flag \
-                    __pride_commie \
-                    __pride_prompt \
+                    __pride_emblem_status \
+                    __pride_emblem_style \
+                    __pride_prompt_char \
                     __pride_username \
                     __pride_hostname \
                     __pride_bind_mode \
-                    __pride_cat \
+                    __pride_cat_style \
                     __pride_cat_status \
-                    __pride_right_prompt \
-                    __pride_dummy
+                    __pride_right_prompt 
+    
+    # all but a few valid commands are also just environment variable names minus the __pride_ prefix
+    # exceptions are 'reset', 'add_asset', 'demo'
+    for var in $pride_vars 
+        set pride_commands $pride_commands (string split -m 3 "_" $var)[4]
+    end
 
     # assign arguments
 
     set -g cmd $argv[1]
     set -g option $argv[2]
-    set -g env_var $pride_vars[(contains -i $cmd $pride_commands)]
-
 
     # functions
 
-    function pride_set 
+    function load_assets
+        for line in (cat $__pride_assetfile)                                                        # read file
+            if test -n $line; and test (string split -m 1 '' $line)[1] != "#"               # if not blank or commented
+                set tmp_asset (string split " " $line)[1]                                   # set tmp_asset to first word on line
+                set tmp_name (string split " " $line)[2]                                    # set tmp_name to second word on line
+                set tmp_value (string split " " $line)[3..-1]                               # set tmp_value to remaining words on line
+                if contains $tmp_asset $opt_asset                                           # check if parsed asset type is valid
+                    eval set -g opt_$tmp_asset \$opt_$tmp_asset $tmp_name                   # add found name to list of valid options
+                    eval set -g __pride_"$tmp_asset"_$tmp_name \$tmp_name \$tmp_value       # create new variable "__pride_asset_name" with contents "name" "value"
+                else 
+                    invalid $tmp_asset $opt_asset
+                end
+            end
+        end
+    end
+
+    function pride_set
         eval set valid_opt \$opt_$cmd
         if contains $option $valid_opt
-            set -U $env_var $option
+            eval set -U __pride_$cmd $option
         else
             invalid $option $valid_opt
         end
@@ -101,25 +91,9 @@ function pride
     end
 
     function confirm 
-        switch $env_var
-            case __pride_commie
-                switch $cmd
-                    case on default
-                        echo "the people's emblem is enabled"
-                    case off
-                        echo "the people's empblem is disabled"
-                end
-            case __pride_cat
-                switch $cmd
-                    case default
-                        echo "cat is (=^･^=)ﾉ (default)"
-                    case slavic
-                        echo "cat is (^._.^)ﾉ (slavic)"
-                end
-            case \*
-                eval set value \$$env_var
-                echo "$cmd is set to $value"
-        end
+        eval set value \$__pride_$cmd                                           # $value equals the value of the environment variable we're modifying
+        eval set state \$__pride_"$cmd"_$value                                  # $state equals the contents of the currently selected asset
+        eval echo "$cmd is set to \$__pride_$cmd \$state[2..-1]"                # output modified variable name, its new value, and the contents of its asset
     end
 
 
@@ -132,57 +106,35 @@ function pride
             set entry "Y"
         end
         if test $entry = Y
-            for option in $pride_vars
-                set -U $option default
-                set -g cmd $option
-                confirm $option
+            for variable in $pride_vars
+                set -U $variable default
+                set -g cmd $variable
+                confirm $variable
             end
         else
             echo "config not reset"
         end
     end
 
-    # function to add custom flags to the pride-cat theme
-    # flags are in the format:
-    #   name color1 color2 ... color3
-    # tested with hex values, but can probably use fish builtin colors
-    # for example
-    #   pride add_flag france 0000FF FFFFFF FF0000
-    # which can then be activated by
-    #   pride flag france
 
-    function add_flag
-        set name $argv[2]
-        if test $argv[2] = help
-            echo " add_flag: function to add custom flags to the pride-cat theme
-            flags are in the format:
-              name color1 color2 ... colorN
-            tested with hex values, but can probably use fish builtin colors
-            for example
-              pride add_flag france 0000FF FFFFFF FF0000
-            which can then be activated by
-              pride flag france"
-        else
-            set colors $argv[3..-1]
-            set -U __pride_flags $__pride_flags $name
-            eval set -U __pride_flag_$name $colors
-        end 
-    end
-
-    # exec section
-
-    if test -z $argv[1]
+    ##############################################
+    # main execution section
+    ########################
+    load_assets
+    if test -z $cmd
         invalid blank $pride_commands
-    else if test $cmd = reset
-        pride_reset_defaults
-    else if test $cmd = add_flag
-        add_flag $argv
     else
-        switch $cmd
+         switch $cmd
+            case reset
+                pride_reset_defaults
+            case add_asset
+                __pride_add_asset $argv
+            case demo
+                echo "coming soon"
             case $pride_commands
                 pride_set
             case \*
                 invalid $cmd $pride_commands
         end
     end
-end
+#end
