@@ -1,19 +1,16 @@
-set -U __pride_flag default 
-set -U __pride_bind_mode off
-set -U __pride_commie default
-set -U __pride_hostname default
-set -U __pride_username default
-set -U __pride_cat_style default
-set -U __pride_cat_status on
-set -U __pride_prompt default
-set -U __pride_flags gay \
-                bi \
-                lesbian \
-                lipstick \
-                pan \
-                trans \
-                nonbinary \
-                soviet \
-                sankara
-echo "pride cat theme reset to defaults"
+# set of variables to initialize
+set -U __pride_vars \
+                    __pride_flag_style \
+                    __pride_bind_mode \
+                    __pride_username \
+                    __pride_hostname \
+                    __pride_emblem_status \
+                    __pride_emblem_style \
+                    __pride_prompt_style \
+                    __pride_cat_status \
+                    __pride_cat_style \
+                    __pride_right_prompt 
 
+for var in $__pride_vars
+    set -U $var default
+end

@@ -16,7 +16,7 @@ flag nonbinary FFF430 FFFFFF 9C59D1 191919
 flag sankara FCD116 009E49 EF2B2D F2F2F2 191919
 
 # cat styles are in format
-#   cat_style name 'value' ['value']...
+#   cat name 'value' ['value']...
 # the quotes are important
 # 
 # there's no strict reason why your cat can't have multiple values,
@@ -25,17 +25,17 @@ flag sankara FCD116 009E49 EF2B2D F2F2F2 191919
 # oh! idea! maybe you could shuffle them somehow....
 # 
 # default cats
-cat_style default '(=^･^=)ﾉ'
-cat_style slavic '(^._.^)ﾉ'
+cat default '(=^･^=)ﾉ'
+cat slavic '(^._.^)ﾉ'
 
 # prompt characters need a name
 # sorry not sorry
 # default prompt characters
-prompt_char block "█"
-prompt_char default "➤"
+prompt block "█"
+prompt default "➤"
 
 # emblem styles are the same as cat styles:
-#   emblem_style name 'value' ['value']...
+#   emblem name 'value' ['value']...
 # the quotes are important
 #
 # this could be another cat for all I care
@@ -43,20 +43,15 @@ prompt_char default "➤"
 # and prints in a different spot
 # again, no strict reason why you can't have multiple values here
 # default emblems
-emblem_style commie "☭"
+emblem commie "☭"
+emblem default "☭"
 
 #dingy thingy bingy
 
 # user-added assets below this line
 ###################################
-cat_style meh '(-__-)'
+cat meh '(-__-)'
 
-cat_style  ''
+emblem percent '%'
 
-cat_style  ''
-
-cat_style  'happy'
-
-emblem_style percent '%'
-
-prompt_char percent '%'
+prompt percent '%'

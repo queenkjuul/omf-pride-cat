@@ -72,13 +72,13 @@ end
 function __pride_git_status_icons
   set -l git_status (__pride_git_status_codes)
 
-  __pride_rainbow $git_status $__pride_trans_pink 'D'
-  __pride_rainbow $git_status $__pride_color_orange 'R'
-  __pride_rainbow $git_status $__pride_color_white 'C'
-  __pride_rainbow $git_status $__pride_color_green 'A'
-  __pride_rainbow $git_status $__pride_color_blue 'U'
-  __pride_rainbow $git_status $__pride_color_lilac 'M'
-  __pride_rainbow $git_status $__pride_color_grey '?'
+  __pride_rainbow $git_status $__pride_color_git_d 'D'
+  __pride_rainbow $git_status $__pride_color_git_r 'R'
+  __pride_rainbow $git_status $__pride_color_git_c 'C'
+  __pride_rainbow $git_status $__pride_color_git_a 'A'
+  __pride_rainbow $git_status $__pride_color_git_u 'U'
+  __pride_rainbow $git_status $__pride_color_git_m 'M'
+  __pride_rainbow $git_status $__pride_color_git_q '?'
 end
 
 function __pride_print_cat
