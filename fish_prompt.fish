@@ -46,7 +46,7 @@ end
 
 function __pride_print_cat
   if test $__pride_cat_status != off
-    __pride_color_echo $__pride_cat_color $__pride_cat
+    __pride_color_echo $__pride_cat_color (string trim -c '\'' $__pride_cat | tr -d \n)
   end
 end 
 
