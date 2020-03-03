@@ -58,7 +58,7 @@ end
 
 function __pride_print_emblem
   if test $__pride_emblem_status != off
-    __pride_color_echo $__pride_emblem_color (string -c '"\'"' $__pride_emblem)
+    __pride_color_echo $__pride_emblem_color (string trim -c '"\'"' $__pride_emblem)
   end
 end
 
@@ -119,7 +119,6 @@ end
 ####################
 
 function fish_prompt
-  __pride_check_defaults
   __pride_print_bind_mode
   __pride_print_userinfo
   __pride_current_folder
