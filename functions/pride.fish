@@ -45,7 +45,7 @@ function pride
     for var in $__pride_config_vars 
         set pride_commands $pride_commands (string split -m 3 "_" $var)[4]
     end
-    eval set pride_commands \$pride_commands $opt_asset
+    set pride_commands $pride_commands $opt_asset
 
     # assign arguments
 

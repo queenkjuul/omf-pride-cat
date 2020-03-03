@@ -7,10 +7,11 @@ Install oh-my-fish, then install pride-cat with `omf install https://github.com/
 
 then run
 
-`cp $OMF_PATH/themes/pride-cat/pride_assets.fish ~/.config/fish/pride_assets.fish`
-`cp $OMF_PATH/themes/pride-cat/pride_config.fish ~/.config/fish/pride_config.fish`
-`fish $OMF_PATH/themes/pride-cat/functions/conf.d/__pride_init.fish`
-
+```
+cp $OMF_PATH/themes/pride-cat/pride_assets.fish ~/.config/fish/pride_assets.fish
+cp $OMF_PATH/themes/pride-cat/pride_config.fish ~/.config/fish/pride_config.fish
+fish $OMF_PATH/themes/pride-cat/functions/conf.d/__pride_init.fish
+```
 
 These will be incorporated into the install functions once I figure out how omf handles them. 
 
