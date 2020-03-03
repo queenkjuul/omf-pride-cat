@@ -10,8 +10,8 @@
 # set -U __pride_assetfile $OMF_CONFIG/themes/omf-pride-cat/assetfile.fish
 # set -U __pride_configfile $OMF_CONFIG/themes/omf-pride-cat/pride_config.fish
 
-set -U __pride_assetfile ~/omf-pride-cat/pride_assets.fish
-set -U __pride_configfile ~/omf-pride-cat/pride_config.fish
+set -U __pride_assetfile ~/.config/fish/pride_assets.fish
+set -U __pride_configfile ~/.config/fish/pride_config.fish
 
 # Colors 
 

@@ -1,5 +1,21 @@
 # Pride Cat
 
+***DEV CHANNEL - OMF STOCK INSTALL NOT YET WORKING***
+but you can totally try it out with most of the features. You just need to do a few things yourself. 
+
+Install oh-my-fish, then install pride-cat with `omf install https://github.com/queenkjuul/omf-pride-cat`
+
+then run
+
+`cp $OMF_PATH/themes/pride-cat/pride_assets.fish ~/.config/fish/pride_assets.fish`
+`cp $OMF_PATH/themes/pride-cat/pride_config.fish ~/.config/fish/pride_config.fish`
+`fish $OMF_PATH/themes/pride-cat/functions/conf.d/__pride_init.fish`
+
+
+These will be incorporated into the install functions once I figure out how omf handles them. 
+
+==================
+
 a highly customizable fish shell theme featuring cats and pride flags
 
 [![Oh My Fish](https://img.shields.io/badge/Framework-Oh_My_Fish-blue.svg?style=flat)](https://github.com/oh-my-fish/oh-my-fish)

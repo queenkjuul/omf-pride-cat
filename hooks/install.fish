@@ -14,5 +14,3 @@ set -U __pride_vars \
 for var in $__pride_vars
     set -U $var default
 end
-
-echo "$PWD"
