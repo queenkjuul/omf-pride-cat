@@ -72,11 +72,8 @@
     end
 
     function pride_set
-        echo $cmd
-        echo $opt_flag
         eval set valid_opt \$opt_$cmd
         if contains $cmd $opt_asset
-            echo "$cmd is valid asset"
             if eval contains $option \$opt_"$cmd"
                 eval set -U __pride_$cmd \$__pride_"$cmd"_"$option"[2..-1]
                 eval set -U __pride_"$cmd"_style \$__pride_"$cmd"_"$option"[1]
@@ -102,16 +99,17 @@
         eval set state \$__pride_"$cmd"_$value                                  # $state equals the contents of the currently selected asset
         if contains $cmd $opt_asset
             eval set style \$__pride_"$cmd"_style
-            eval echo -n "$cmd is set to \$__pride_"$cmd"_"$style"  "
-            if test $cmd = flag
+            if test "$cmd" = "flag"
+                eval echo -n "$cmd is set to \$__pride_"$cmd"_"$style"[1]  "
                 __pride_flag_line $__pride_flag
             else
+                eval echo -n "$cmd is set to \$__pride_"$cmd"_"$style"  "
                 eval echo -n "\$state[2..-1]"
             end
         else
             eval echo -n "$cmd is set to \$__pride_$cmd  "            
             eval echo -n "\$state[2..-1]"                # output modified variable name, its new value, and the contents of its asset
-        end                                                                    # TODO: make this print flag
+        end                                                                    
     end
 
 
@@ -132,22 +130,6 @@
         else
             echo "config not reset"
         end
-    end
-
-    function __pride_flag_line
-        if test $__pride_flag_style != soviet
-            for color in $argv[1..-1]
-            set_color $color 
-            echo -n $__pride_prompt_char
-            set_color normal
-            end
-        else if test $__pride_flag = soviet
-            set_color -b $__pride_soviet_red
-            set_color $__pride_soviet_yellow
-            echo -n " ☭   "
-            set_color normal
-        end 
-    echo -n " "
     end
 
     ##############################################

@@ -56,7 +56,6 @@ end
 # load asset values
 set opt_asset 'cat' 'flag' 'emblem' 'prompt'
 for asset in $opt_asset
-echo -e "$asset\n"
     for line in (cat $__pride_assetfile)
         if test -n $line; 
         and test (string split -m 1 '' (echo $line | sed -n 's/ *//p'))[1] != "#"; 
@@ -65,11 +64,8 @@ echo -e "$asset\n"
             set class (string split ' ' $line)[1]
             set name (string split ' ' $line)[2]
             set value (string split ' ' $line)[3..-1]
-            echo "$class $name $value"
-            echo (string split ' ' $line)[2]
-            eval echo \$__pride_"$asset"_style
+
             if eval test \$__pride_"$asset"_style = $name
-                echo match
                 eval set -U __pride_$asset \$value
             end
         end
