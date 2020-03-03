@@ -29,7 +29,8 @@ set __pride_erase_vars \
                     __pride_emblem \
                     __pride_prompt \
                     __pride_assetfile \
-                    __pride_configfile
+                    __pride_configfile \
+                    __pride_vars
 
 for var in $__pride_erase_vars
     set -e $var

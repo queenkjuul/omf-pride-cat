@@ -1,0 +1,1 @@
+/Users/julie.hill/.local/share/omf/themes/pride-cat/conf.d/__pride_init.fish
