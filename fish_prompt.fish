@@ -15,26 +15,6 @@ function __pride_color_echo
   set_color normal
 end
 
-function __pride_print_bind_mode
-  if test "$__pride_bind_mode" != "off"
-    set_color B77FDD
-    printf '['
-    switch $fish_bind_mode
-      case default
-        set_color red
-        printf 'n'
-      case insert
-        set_color green
-        printf 'i'
-      case visual
-        set_color magenta
-        printf 'v'
-    end
-    set_color B77FDD
-    printf '] '
-  end
-end
-
 function __pride_print_userinfo
   if test "$__pride_username" != "off"
     __pride_color_echo $__pride_username_color (whoami)
@@ -51,14 +31,16 @@ function __pride_current_folder
   if test $PWD = '/'
     echo -n '/'
   else
-    echo -n $PWD | grep -o -E '[^\/]+$' | tr -d \n
+    echo -n $PWD | grep -o -E '[^\/]+$' | tr -d \n; echo -n " "
   end
   set_color normal
 end
 
 function __pride_print_emblem
   if test $__pride_emblem_status != off
+    echo -n " "
     __pride_color_echo $__pride_emblem_color (string trim -c '"\'' $__pride_emblem | tr -d \n)
+    echo -n " "
   end
 end
 
@@ -100,11 +82,11 @@ function __pride_git_status
   if test -n (__pride_git_branch_name)
     __pride_color_echo FFFFFF (__pride_git_branch_name)
     if test -n (__pride_git_status_codes)
-      __pride_color_echo $__pride_trans_pink ' ●'
+      __pride_color_echo FF1B8D ' ●'
       __pride_print_cat
       __pride_git_status_icons
     else
-      __pride_color_echo $__pride_color_green ' ○'
+      __pride_color_echo 008018 ' ○'
       __pride_print_cat
     end
   else
