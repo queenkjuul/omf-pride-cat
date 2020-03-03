@@ -51,7 +51,7 @@ function __pride_current_folder
   if test $PWD = '/'
     echo -n '/'
   else
-    echo -n $PWD | grep -o -E '[^\/]+$'
+    echo -n $PWD | grep -o -E '[^\/]+$' | tr -d \n
   end
   set_color normal
 end
@@ -98,7 +98,7 @@ end
 function __pride_git_status
   # In git
   if test -n (__pride_git_branch_name)
-    __pride_color_echo $__pride_color_white (__pride_git_branch_name)
+    __pride_color_echo FFFFFF (__pride_git_branch_name)
     if test -n (__pride_git_status_codes)
       __pride_color_echo $__pride_trans_pink ' ●'
       __pride_print_cat
@@ -124,7 +124,7 @@ function fish_prompt
   __pride_current_folder
   __pride_print_emblem
   __pride_git_status
-  __pride_print_cat
+
 
   # new line
   echo
