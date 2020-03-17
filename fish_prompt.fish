@@ -3,6 +3,10 @@
 
 # live long and prosper, loves
 
+# Right Prompt
+
+set -g __pride_right_prompt on
+
 # Colors and Flag Definitions
 
 # trans
